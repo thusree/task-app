@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
         $user = USER::select('name','email','number','is_admin','profile')->where('id',auth()->user()->id)->first();
         if(isset($user) && $user->is_admin){
-            $userAll = USER::select('id','name','email','number','is_admin')->get();
+             $userAll = USER::select('id','name','email','number','is_admin','profile')->get();
             return view('admin', compact('userAll'));
         }else{
             return view('home', compact('user'));
