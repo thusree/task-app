@@ -24,3 +24,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/sendmail', [App\Http\Controllers\MailController::class, 'sendContactMail'])->name('send.mail');
 Route::get('/verifyAcccount', [App\Http\Controllers\SmsController::class, 'sendContactSms'])->name('send.sms');
 Route::post('/verified', [App\Http\Controllers\SmsController::class, 'sendContactverified'])->name('send.verified');
+Route::post('/resend', [App\Http\Controllers\SmsController::class, 'resendverified'])->name('send.resend');
