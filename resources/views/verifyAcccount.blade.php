@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
+{{-- <style>
     .card {
   width: 350px;
   padding: 10px;
@@ -40,7 +40,9 @@ body {
 .cursor {
   cursor: pointer;
 }
-</style>
+</style> --}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> --}}
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -70,9 +72,10 @@ body {
                                     <button class="font-weight-bold text-danger cursor">Verify</button></div>
                                 </div>
                             </form>
-                            <form action="" method="POST">
+                            <form action="{{ route('send.resend') }}" method="POST">
                                 @csrf
-                                 <div class="text-center mt-5"><span class="d-block mobile-text">Don't receive the code?</span><button class="font-weight-bold text-danger cursor">Resend</button></div>
+                                {{-- <div id="timer">00:00</div> --}}
+                                 <div class="text-center mt-5"><span class="d-block mobile-text">Don't receive the code?</span><button id="resend-btn" class="font-weight-bold text-danger cursor" disabled>Resend</button></div>
                             </form>
                         </div>
                     </div>
@@ -83,3 +86,32 @@ body {
     </div>
 </div>
 @endsection
+
+{{-- <script>
+
+    setTimeout(() => {
+        var timerDuration = 20;
+        var timerInterval;
+        function startTimer() {
+            var timer = timerDuration;
+            timerInterval = setInterval(function() {
+                var minutes = Math.floor(timer / 60);
+                var seconds = timer % 60;
+                var timeString = ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2);
+                document.querySelector('#timer').text = timeString ;
+                timer--;
+
+                if (timer < 0) {
+                    clearInterval(timerInterval);
+                    document.querySelector('#resend-btn').disabled  = false;
+                }
+            }, 1000);
+        }
+
+        document.querySelector('#resend-btn').addEventListener('click',() => {
+            document.querySelector('#resend-btn').disabled =  true;
+            startTimer();
+        });
+        startTimer();
+    }, 1000);
+</script> --}}
